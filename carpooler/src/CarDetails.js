@@ -4,10 +4,11 @@ import axios from 'axios';
 
 const CarDetails = () => {
     const [fname, setName] = useState('');
-    const [aadhar, setaadhar] = useState('');
-    const [license, setlicense] = useState('');
-    const [number, setnumber] = useState('');
+    const [aadhar, setAadhar] = useState('');
+    const [license, setLicense] = useState('');
+    const [number, setNumber] = useState('');
     const token = localStorage.getItem("token");
+    const userId = localStorage.getItem("user_id");
     const navigate = useNavigate();
     useEffect(() => {
         if (!token) {
@@ -23,7 +24,8 @@ const CarDetails = () => {
           formData.append('aadhar', aadhar);
           formData.append('license', license); 
           formData.append('number', number); 
-    
+          formData.append('user_id', userId);
+
           await axios.post('http://localhost:4000/addprofile', formData, {
             headers: {
               'Content-Type': 'multipart/form-data',
@@ -39,7 +41,7 @@ const CarDetails = () => {
 
     return (
         <div className="container mt-4">
-            <form className="border p-4">
+            <form className="border p-4" onSubmit={handleSubmit}>
                 <h1> My Profile </h1>
                 <div class="row mb-3">
                     <label class="col-sm-2 col-form-label">Name: </label>
@@ -48,8 +50,8 @@ const CarDetails = () => {
                             type="name"
                             class="form-control"
                             name="fname"
-
-
+                            value={fname}
+                            onChange={(e) => setName(e.target.value)}
                         />
                         {/* {error && error.includes('email') && <div className="text-danger">{error}</div>} */}
                     </div>
@@ -74,8 +76,8 @@ const CarDetails = () => {
                             type="name"
                             class="form-control"
                             name="aadharnumber"
-
-
+                            value={aadhar}
+                            onChange={(e) => setAadhar(e.target.value)}
                         />
                         {/* {error && error.includes('password') && <div className="text-danger">{error}</div>}  */}
                     </div>
@@ -87,8 +89,8 @@ const CarDetails = () => {
                             type="name"
                             class="form-control"
                             name="licensenumber"
-
-
+                            value={license}
+                            onChange={(e) => setLicense(e.target.value)}
                         />
                         {/* {error && error.includes('password') && <div className="text-danger">{error}</div>}  */}
                     </div>
@@ -99,9 +101,9 @@ const CarDetails = () => {
                         <input
                             type="name"
                             class="form-control"
-                            name="mobilenumber"
-
-
+                            name=" mobilenumber"
+                            value={number}
+                            onChange={(e) => setNumber(e.target.value)}
                         />
                         {/* {error && error.includes('password') && <div className="text-danger">{error}</div>}  */}
                     </div>
