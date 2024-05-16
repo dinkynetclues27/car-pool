@@ -9,14 +9,16 @@ routers.post("/registeradmin",registerAdmin);
 //carpooler
 const {registerCarPooler} = require('../controllers/Login/register');
 const login = require('../controllers/Login/login');
-const profile = require('../controllers/Login/profile')
+const profile = require('../controllers/Login/profile');
+const {fetchprofile,fetchprofilebyid} = require('../controllers/Login/fetchprofile');
+
+
+
 routers.post("/registercarpooler",registerCarPooler);
 routers.post("/login",login);
-routers.post("/profile",profile);
-
-
-
-
+routers.post("/profile",authenticateUser,profile);
+routers.get("/getprofile",fetchprofile)
+routers.get("/getprofile/:profile_id",fetchprofilebyid)
 
 
 

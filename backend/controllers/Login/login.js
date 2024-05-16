@@ -35,7 +35,7 @@ const login = async (req, res) => {
 
         }, JWT_SECRET);
         res.cookie('jwt', token, { httpOnly: true, secure: true, maxAge: 3600000 })
-        return res.status(200).json({ message: 'Login successful', token });
+        return res.status(200).json({ message: 'Login successful', token,user_id: user[0].user_id });
     } catch (error) {
         console.error("Error logging in:", error);
         res.status(500).json({ error: 'Internal Server Error' });

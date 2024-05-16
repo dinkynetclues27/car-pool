@@ -1,23 +1,21 @@
-const {QueryTypes} =require('sequelize');
+const { QueryTypes } = require('sequelize');
 const sequelize = require('../../database');
 
-const profile = async(req,res) =>{
-    const{
-        user_id,
-        fname,
-        license,
-        aadhar,
-        number
-    }=req.body
+const profile = async (req, res) => {
+    const { user_id, fname, license, aadhar, number } = req.body;
+    console.log('Received request body:', req.body); 
 
-    try{
-        await sequelize.query('Insert into profile(user_id,fname,license,aadhar,number) values (?,?,?,?,?)',
-        { replacements: [user_id,fname,license,aadhar,number], type: QueryTypes.INSERT });
+    try {
+        const result = await sequelize.query(
+            'INSERT INTO profile (user_id, fname, license, aadhar, number) VALUES (?, ?, ?, ?, ?)',
+            { replacements: [user_id, fname, license, aadhar, number], type: QueryTypes.INSERT }
+        );
+        console.log('Insert result:', result); 
         res.status(200).json({ message: 'Profile Added successfully' });
-
-    }catch(error){
-        console.error(error);
+    } catch (error) {
+        console.error('Error inserting profile:', error); 
         res.status(500).json({ error: 'Internal server error' });
     }
 }
+
 module.exports = profile;

@@ -4,16 +4,19 @@ import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import Login from './Login/login';
 import Home from './Home';
 import Register from './Login/register';
-import CarDetails from './CarDetails'
+import PersonalDetails from './PersonalDetails'
+import Navigate from './Navigation';
 function App() {
   return (
    <div>
+     
       <BrowserRouter>
+      <Navigate/>
       <Routes>
       <Route path="/" element={<Login />} />
       <Route path='/home' element={<Home />} />
       <Route path = '/register' element={<Register/>}/>
-      <Route path = '/personaldetails' element={<CarDetails/>}/>
+      <Route path = '/personaldetails' element={<PersonalDetails/>}/>
       </Routes>
       </BrowserRouter>
    </div>

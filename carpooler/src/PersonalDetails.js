@@ -2,13 +2,13 @@ import React, { useState,useEffect } from 'react';
 import { Link,useNavigate } from 'react-router-dom'
 import axios from 'axios';
 
-const CarDetails = () => {
+const PersonalDetails = () => {
     const [fname, setName] = useState('');
     const [aadhar, setAadhar] = useState('');
     const [license, setLicense] = useState('');
     const [number, setNumber] = useState('');
     const token = localStorage.getItem("token");
-    const userId = localStorage.getItem("user_id");
+    const user_id = localStorage.getItem("user_id");
     const navigate = useNavigate();
     useEffect(() => {
         if (!token) {
@@ -20,13 +20,12 @@ const CarDetails = () => {
         e.preventDefault();
         try {
           const formData = new FormData();
-          formData.append('name', fname);
+          formData.append('fname', fname);
           formData.append('aadhar', aadhar);
           formData.append('license', license); 
           formData.append('number', number); 
-          formData.append('user_id', userId);
 
-          await axios.post('http://localhost:4000/addprofile', formData, {
+          await axios.post('http://localhost:4000/profile', formData, {
             headers: {
               'Content-Type': 'multipart/form-data',
               'Authorization' : `${token}`
@@ -75,7 +74,7 @@ const CarDetails = () => {
                         <input
                             type="name"
                             class="form-control"
-                            name="aadharnumber"
+                            name="aadhar"
                             value={aadhar}
                             onChange={(e) => setAadhar(e.target.value)}
                         />
@@ -88,7 +87,7 @@ const CarDetails = () => {
                         <input
                             type="name"
                             class="form-control"
-                            name="licensenumber"
+                            name="license"
                             value={license}
                             onChange={(e) => setLicense(e.target.value)}
                         />
@@ -101,7 +100,7 @@ const CarDetails = () => {
                         <input
                             type="name"
                             class="form-control"
-                            name=" mobilenumber"
+                            name="number"
                             value={number}
                             onChange={(e) => setNumber(e.target.value)}
                         />
@@ -109,7 +108,7 @@ const CarDetails = () => {
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">
-                    Add Car
+                    Add Profile
                 </button>
                 <br />
                 <br />
@@ -123,4 +122,4 @@ const CarDetails = () => {
     )
 }
 
-export default CarDetails;
+export default PersonalDetails;

@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import Joi from "joi";
 import { Link } from "react-router-dom";
+
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
       email: "",
       password: "",
-      error: null,
+      error: null,  
     };
     this.schema = Joi.object({
       email: Joi.string()
@@ -34,7 +35,7 @@ class Login extends Component {
     const { error } = this.schema.validate({ email, password }, { abortEarly: false });
     if (error) {
       this.setState({ error: error.details[0].message });
-     return;
+      return;
     }
     const xhr = new XMLHttpRequest();
     xhr.open("POST", "http://localhost:4000/login", true);
@@ -43,8 +44,10 @@ class Login extends Component {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
           const response = JSON.parse(xhr.responseText);
-          const { token } = response;
+          const { token,user_id } = response;
+          
           localStorage.setItem("token", token);
+          localStorage.setItem("user_id", user_id);
           console.log("Login successfully")
           window.location.href = "/home";
         } else {
@@ -60,43 +63,41 @@ class Login extends Component {
     const { email, password, error } = this.state;
 
     return (
-      <div className="container mt-4">
+      <div className="container mt-4 square-container d-flex justify-content-center align-items-center">
         <form onSubmit={this.handleSubmit} className="border p-4">
-          <div class="row mb-3">
-            <label class="col-sm-2 col-form-label">Email: </label>
-            <div class="col-sm-10">
-              <input
-                type="email"
-                class="form-control"
-                name="email"
-                value={email}
-                onChange={this.handleChange}
-              />
-             {error && error.includes('email') && <div className="text-danger">{error}</div>}
-            </div>
+          <h1>Login</h1>
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label">Email:</label>
+            <input
+              type="email"
+              className="form-control"
+              id="email"
+              name="email"
+              value={email}
+              onChange={this.handleChange}
+            />
+            {error && error.includes('email') && <div className="text-danger">{error}</div>}
           </div>
-          <div class="row mb-3">
-            <label class="col-sm-2 col-form-label">Password:</label>
-            <div class="col-sm-10">
-              <input
-                type="password"
-                class="form-control"
-                name="password"
-                value={password}
-                onChange={this.handleChange}
-              />
-              {error && error.includes('password') && <div className="text-danger">{error}</div>} 
-            </div>
+          <div className="mb-3">
+            <label htmlFor="password" className="form-label">Password:</label>
+            <input
+              type="password"
+              className="form-control"
+              id="password"
+              name="password"
+              value={password}
+              onChange={this.handleChange}
+            />
+            {error && error.includes('password') && <div className="text-danger">{error}</div>} 
           </div>
         
-          <button type="submit" class="btn btn-primary">
+          <button type="submit" className="btn btn-success btn-lg btn-block mb-3">
             Login
           </button>
-          <br />
-          <br />
+          <br></br>
           <Link to="/register">
-            <button type="submit" class="btn btn-primary">
-              Don't have account ? Register
+            <button type="submit" className="btn btn-secondary btn-lg btn-block">
+              Don't have an account? Register
             </button>
           </Link>
         </form>
