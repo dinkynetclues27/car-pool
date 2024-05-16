@@ -22,12 +22,6 @@ const PersonalDetails = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // const formData = new FormData();
-      // formData.append('fname', fname);
-      // formData.append('aadhar', aadhar);
-      // formData.append('license', license);
-      // formData.append('number', number);
- 
       await axios.post('http://localhost:4000/profile', formData, {
         headers: {
           'Authorization': `${token}`
@@ -107,11 +101,7 @@ const PersonalDetails = () => {
         </button>
         <br />
         <br />
-        {/* <Link to="/register">
-                <button type="submit" class="btn btn-primary">
-                  Don't have account ? Register
-                </button>
-              </Link> */}
+
       </form>
     </div>
   )

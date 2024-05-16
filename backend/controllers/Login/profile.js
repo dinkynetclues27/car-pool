@@ -16,6 +16,6 @@ const profile = async (req, res) => {
         console.error('Error inserting profile:', error); 
         res.status(500).json({ error: 'Internal server error' });
     }
-}
+}   
 
 module.exports = profile;

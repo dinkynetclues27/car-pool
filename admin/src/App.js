@@ -4,6 +4,7 @@ import './App.css';
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import Login from './components/login'
 import Dashboard from './components/dashboard';
+import ProfileFetch from './components/profile';
 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
           <Routes>
           <Route path="/login" element={<Login />} />
             <Route path="/" element={<Dashboard/>} />
-           
+            <Route path="/fetchprofile" element={<ProfileFetch/>} />
           </Routes>
 
         </div>
