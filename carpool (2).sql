@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 16, 2024 at 02:12 PM
+-- Generation Time: May 17, 2024 at 06:34 AM
 -- Server version: 8.2.0
 -- PHP Version: 8.2.13
 
@@ -38,18 +38,19 @@ CREATE TABLE IF NOT EXISTS `car` (
   `from_destination` varchar(200) NOT NULL,
   `to_destination` varchar(200) NOT NULL,
   `ride_status` enum('on','off') NOT NULL DEFAULT 'on',
+  `request` enum('true','false') NOT NULL DEFAULT 'false',
   PRIMARY KEY (`car_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `car`
 --
 
-INSERT INTO `car` (`user_id`, `car_id`, `car_name`, `chasis_number`, `seats_available`, `car_plate_number`, `from_destination`, `to_destination`, `ride_status`) VALUES
-(2, 1, 'Thar', 'ABC', '2', 'GJ01UV9090', '', '', 'on'),
-(3, 2, 'XUV', 'abj ', '4', 'GJ01TY1234', '', '', 'on'),
-(3, 3, 'XUV', 'abj ', '4', 'GJ01TY1234', 'satellite', 'bopal', 'on');
+INSERT INTO `car` (`user_id`, `car_id`, `car_name`, `chasis_number`, `seats_available`, `car_plate_number`, `from_destination`, `to_destination`, `ride_status`, `request`) VALUES
+(2, 1, 'Thar', 'ABC', '2', 'GJ01UV9090', '', '', 'on', 'false'),
+(3, 3, 'XUV', 'abj ', '4', 'GJ01TY1234', 'satellite', 'bopal', 'off', 'false'),
+(3, 4, 'Thar', 'ABC', '2', 'GJ01UV9090', 'ahmedabad', 'bopal', 'on', 'false');
 
 -- --------------------------------------------------------
 
@@ -87,14 +88,14 @@ DROP TABLE IF EXISTS `profile`;
 CREATE TABLE IF NOT EXISTS `profile` (
   `user_id` int NOT NULL,
   `fname` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `license` varchar(200) NOT NULL,
+  `license` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `aadhar` varchar(200) NOT NULL,
   `number` varchar(10) NOT NULL,
   `profile_id` int NOT NULL AUTO_INCREMENT,
   `profile_status` enum('approved','pending') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'pending',
   PRIMARY KEY (`profile_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `profile`
@@ -104,11 +105,8 @@ INSERT INTO `profile` (`user_id`, `fname`, `license`, `aadhar`, `number`, `profi
 (2, 'dinky', 'abc1234', '1234', '8849530547', 3, 'approved'),
 (3, 'dinky', 'bcdef', 'abc121', '8849530547', 5, 'approved'),
 (4, 'keval', 'bcdef', 'abc121', '9456159653', 6, 'pending'),
-(4, 'keval', 'bcdef', 'abc121', '9456159653', 7, 'pending'),
 (1, 'Yash', 'zdhfhdsd', 'sdaghsda', '384343', 8, 'pending'),
-(1, 'Yash', 'zdhfhdsd', 'sdaghsda', '384343', 9, 'pending'),
-(4, 'keval', 'bcdef', 'abc121', '9456159653', 10, 'pending'),
-(3, 'dinky', 'abbbbff', 'abc121', '9173345345', 11, 'pending');
+(5, 'keval', NULL, 'abc121', '9456159653', 13, 'pending');
 
 --
 -- Constraints for dumped tables
