@@ -32,6 +32,9 @@ routers.delete("/deleteprofile/:profile_id",deleteProfile)
 
 
 //passenger
-const {registerPassenger} = require('../controllers/Login/register')
+const {registerPassenger} = require('../controllers/Login/register');
+const searchcar = require('../controllers/Login/searchcar');
+
 routers.post("/registerpassenger",registerPassenger);
+routers.post("/search",searchcar)
 module.exports = routers;

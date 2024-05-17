@@ -6,6 +6,7 @@ import Home from './Login/Home'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import Navigate from './Login/Navigation';
 import PersonalDetails from './PersonalDetails';
+import Searchride from './Login/TakeRide';
 
 function App() {
   return (
@@ -17,6 +18,8 @@ function App() {
       <Route path="/login" element={<Login/>} >Login</Route>
       <Route path="/home" element={<Home/>}>Home</Route>
       <Route path="/personaldetails" element={<PersonalDetails/>}>Profile</Route>
+      <Route path="/searchride" element={<Searchride/>}>Ride</Route>
+
     </Routes>
     </BrowserRouter>
     </div>

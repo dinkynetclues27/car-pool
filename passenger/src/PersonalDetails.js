@@ -8,7 +8,6 @@ const PersonalDetails = () => {
   const [formData, setFormData] = useState({
     user_id: user_id,
     fname: '',
-    license: '',
     aadhar: '',
     number: ''
   });
@@ -30,7 +29,7 @@ const PersonalDetails = () => {
       console.log('Profile details added successfully');
       window.location.href = "/home"
     } catch (error) {
-      console.error('Error adding product:', error);
+      console.error('Error adding profile:', error);
     }
   };
  
@@ -70,19 +69,7 @@ const PersonalDetails = () => {
             {/* {error && error.includes('password') && <div className="text-danger">{error}</div>}  */}
           </div>
         </div>
-        <div class="row mb-3">
-          <label class="col-sm-2 col-form-label">License Number:</label>
-          <div class="col-sm-10">
-            <input
-              type="name"
-              class="form-control"
-              name="license"
-              value={formData.license}
-              onChange={handleChange}
-            />
-            {/* {error && error.includes('password') && <div className="text-danger">{error}</div>}  */}
-          </div>
-        </div>
+       
         <div class="row mb-3">
           <label class="col-sm-2 col-form-label">Mobile Number:</label>
           <div class="col-sm-10">

@@ -2,10 +2,22 @@ const { QueryTypes } = require('sequelize');
 const sequelize = require('../../database');
 
 const caradd = async (req, res) => {
-    const { user_id, car_name, chasis_number, seats_available, car_plate_number,from_destination,to_destination } = req.body;
+    const { user_id, car_name, chasis_number, seats_available, car_plate_number, from_destination, to_destination } = req.body;
     console.log('Received request body:', req.body);
 
     try {
+  
+        const activeRide = await sequelize.query(
+            'SELECT * FROM car WHERE user_id = ? AND ride_status = ?',
+            { replacements: [user_id, 'on'], type: QueryTypes.SELECT }
+        );
+
+        if (activeRide.length > 0) {
+            res.status(403).json({ error: 'User already has an active ride. Cannot add another ride.' });
+            return;
+        }
+
+
         const profile = await sequelize.query(
             'SELECT profile_status FROM profile WHERE user_id = ?',
             { replacements: [user_id], type: QueryTypes.SELECT }
@@ -22,8 +34,8 @@ const caradd = async (req, res) => {
         }
 
         const result = await sequelize.query(
-            'INSERT INTO car (user_id, car_name, chasis_number, seats_available, car_plate_number,from_destination,to_destination) VALUES (?, ?, ?, ?, ?,?,?)',
-            { replacements: [user_id, car_name, chasis_number, seats_available, car_plate_number,from_destination,to_destination], type: QueryTypes.INSERT }
+            'INSERT INTO car (user_id, car_name, chasis_number, seats_available, car_plate_number, from_destination, to_destination) VALUES (?, ?, ?, ?, ?, ?, ?)',
+            { replacements: [user_id, car_name, chasis_number, seats_available, car_plate_number, from_destination, to_destination], type: QueryTypes.INSERT }
         );
         console.log('Insert result:', result);
         res.status(200).json({ message: 'Car added successfully' });
