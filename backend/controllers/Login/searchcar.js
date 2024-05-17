@@ -9,7 +9,7 @@ const searchcar = async (req, res) => {
             'SELECT p.fname,c.* FROM car c JOIN profile p ON c.user_id = p.user_id WHERE c.from_destination = ? AND c.to_destination = ? AND c.ride_status = ?',
             { replacements: [from_destination, to_destination, 'on'], type: QueryTypes.SELECT }
         );
-
+                
         res.status(200).json(cars);
     } catch (error) {
         console.error('Error searching for cars:', error);
