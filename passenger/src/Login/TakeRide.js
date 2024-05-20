@@ -6,7 +6,6 @@ const Searchride = () => {
   const [todestination, settodestination] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -17,6 +16,22 @@ const Searchride = () => {
       setSearchResults(response.data);
     } catch (error) {
       console.error('Error searching for cars:', error);
+    }
+  };
+
+  const handleRequest = async (carId) => {
+    try {
+      await axios.put(`http://localhost:4000/request/${carId}`);
+     
+      const updatedResults = searchResults.map(car => {
+        if (car.car_id === carId) {
+          return { ...car, request: 'true' }; 
+        }
+        return car;
+      });
+      setSearchResults(updatedResults);
+    } catch (error) {
+      console.error('Error updating request status:', error);
     }
   };
 
@@ -56,7 +71,10 @@ const Searchride = () => {
           <p className="card-text">Car Plate Number: {car.car_plate_number}</p>
           <p className="card-text">From Destination: {car.from_destination}</p>
           <p className="card-text">To Destination: {car.to_destination}</p>
-          <a href="#" class="btn btn-primary"> Request:{car.request} </a>
+          <p className='card-text'>Mobile number:{car.number}</p>
+          {car.request === 'false' && (
+                  <button className="btn btn-primary" onClick={() => handleRequest(car.car_id)}>Request</button>
+                )}  
         </div>
       ))}
     </div>

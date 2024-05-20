@@ -12,7 +12,9 @@ const PersonalDetails = () => {
     aadhar: '',
     number: ''
   });
+
   const navigate = useNavigate();
+  
   useEffect(() => {
     if (!token) {
       navigate("/login");

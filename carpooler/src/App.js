@@ -7,6 +7,8 @@ import Register from './Login/register';
 import PersonalDetails from './PersonalDetails'
 import CarDetails from './CarDetails';
 import Navigate from './Navigation';
+import Footer from './Footer';
+import Request from './Login/Request';
 function App() {
   return (
    <div>
@@ -14,14 +16,18 @@ function App() {
       <BrowserRouter>
       <Navigate/>
       <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path='/home' element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path='/' element={<Home />} />
       <Route path = '/register' element={<Register/>}/>
       <Route path = '/personaldetails' element={<PersonalDetails/>}/>
       <Route path = '/cardetails' element={<CarDetails/>}/>
+      <Route path = '/request' element={<Request/>}/>
       </Routes>
+    
       </BrowserRouter>
+      <Footer/>
    </div>
+   
   );
 }
 

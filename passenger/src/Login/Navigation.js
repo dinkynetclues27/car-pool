@@ -20,7 +20,7 @@ const Navigate = () => {
               {token ? (
                 <div className="d-flex justify-content-center align-items-center gap-4">
                   <li className="nav-item">
-                    <a className="nav-link text-dark" href="/main">Home</a>
+                    <a className="nav-link text-dark" href="/">Home</a>
                   </li>
                   <li className="nav-item">
                     <a className="nav-link text-dark" href="/personaldetails">Profile</a>

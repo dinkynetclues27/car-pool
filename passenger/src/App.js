@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Register from './Login/register';
 import Login from './Login/login';
@@ -14,9 +13,10 @@ function App() {
     <BrowserRouter>
     <Navigate/>
     <Routes>
+      
       <Route path="/register" element={<Register/>}>Register</Route>
       <Route path="/login" element={<Login/>} >Login</Route>
-      <Route path="/home" element={<Home/>}>Home</Route>
+      <Route path="/" element={<Home/>}>Home</Route>
       <Route path="/personaldetails" element={<PersonalDetails/>}>Profile</Route>
       <Route path="/searchride" element={<Searchride/>}>Ride</Route>
 

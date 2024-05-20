@@ -12,29 +12,33 @@ const login = require('../controllers/Login/login');
 const profile = require('../controllers/Login/profile');
 const {fetchprofile,fetchprofilebyid} = require('../controllers/Login/fetchprofile');
 const {updateProfile,updatedprofilestatus} = require('../controllers/Login/updateprofile');
-
 const deleteProfile = require('../controllers/Login/deleteprofile');
 const caradd = require('../controllers/Login/caradd');
-
+const { acceptRequest, rejectRequest } = require('../controllers/Login/requestar');
 
 routers.post("/registercarpooler",registerCarPooler);
 routers.post("/login",login);
 routers.post("/profile",profile);
 routers.post("/profile/:user_id",profile);
-
 routers.post("/caradd",caradd);
-
 routers.get("/getprofile",fetchprofile);
 routers.get("/getprofile/:profile_id",fetchprofilebyid)
 routers.put("/updateprofile/:profile_id",updateProfile)
 routers.put("/updateprofilestatus/:profile_id",updatedprofilestatus)
 routers.delete("/deleteprofile/:profile_id",deleteProfile)
+routers.put("/acceptrequest/:carId",acceptRequest);
+routers.put("/rejectrequest/:carId",rejectRequest);
 
 
 //passenger
 const {registerPassenger} = require('../controllers/Login/register');
 const searchcar = require('../controllers/Login/searchcar');
+const updaterequest = require('../controllers/Login/updaterequest');
+const fetchRequest = require('../controllers/Login/request');
+
 
 routers.post("/registerpassenger",registerPassenger);
-routers.post("/search",searchcar)
+routers.post("/search",searchcar);
+routers.put("/request/:carId",updaterequest);   
+routers.get("/fetchrequest",fetchRequest)
 module.exports = routers;

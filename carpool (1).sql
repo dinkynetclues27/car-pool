@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: May 17, 2024 at 06:34 AM
+-- Generation Time: May 20, 2024 at 05:19 AM
 -- Server version: 8.2.0
 -- PHP Version: 8.2.13
 
@@ -39,6 +39,7 @@ CREATE TABLE IF NOT EXISTS `car` (
   `to_destination` varchar(200) NOT NULL,
   `ride_status` enum('on','off') NOT NULL DEFAULT 'on',
   `request` enum('true','false') NOT NULL DEFAULT 'false',
+  `request_accept` enum('true','false') NOT NULL DEFAULT 'false',
   PRIMARY KEY (`car_id`),
   KEY `user_id` (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -47,10 +48,10 @@ CREATE TABLE IF NOT EXISTS `car` (
 -- Dumping data for table `car`
 --
 
-INSERT INTO `car` (`user_id`, `car_id`, `car_name`, `chasis_number`, `seats_available`, `car_plate_number`, `from_destination`, `to_destination`, `ride_status`, `request`) VALUES
-(2, 1, 'Thar', 'ABC', '2', 'GJ01UV9090', '', '', 'on', 'false'),
-(3, 3, 'XUV', 'abj ', '4', 'GJ01TY1234', 'satellite', 'bopal', 'off', 'false'),
-(3, 4, 'Thar', 'ABC', '2', 'GJ01UV9090', 'ahmedabad', 'bopal', 'on', 'false');
+INSERT INTO `car` (`user_id`, `car_id`, `car_name`, `chasis_number`, `seats_available`, `car_plate_number`, `from_destination`, `to_destination`, `ride_status`, `request`, `request_accept`) VALUES
+(2, 1, 'Thar', 'ABC', '2', 'GJ01UV9090', '', '', 'on', 'false', 'false'),
+(3, 3, 'XUV', 'abj ', '4', 'GJ01TY1234', 'satellite', 'bopal', 'on', 'false', 'false'),
+(3, 4, 'Thar', 'ABC', '2', 'GJ01UV9090', 'ahmedabad', 'bopal', 'on', 'true', 'false');
 
 -- --------------------------------------------------------
 

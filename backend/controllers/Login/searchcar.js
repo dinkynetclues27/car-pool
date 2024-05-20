@@ -6,7 +6,7 @@ const searchcar = async (req, res) => {
 
     try {
         const cars = await sequelize.query(
-            'SELECT p.fname,c.* FROM car c JOIN profile p ON c.user_id = p.user_id WHERE c.from_destination = ? AND c.to_destination = ? AND c.ride_status = ?',
+            'SELECT p.fname,p.number,c.* FROM car c JOIN profile p ON c.user_id = p.user_id WHERE c.from_destination = ? AND c.to_destination = ? AND c.ride_status = ?',
             { replacements: [from_destination, to_destination, 'on'], type: QueryTypes.SELECT }
         );
                 
