@@ -6,6 +6,8 @@ const Searchride = () => {
   const [todestination, settodestination] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
+  const user_id = localStorage.getItem("user_id");
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -19,21 +21,35 @@ const Searchride = () => {
     }
   };
 
-  const handleRequest = async (carId) => {
-    try {
-      await axios.put(`http://localhost:4000/request/${carId}`);
+ 
+  // const handleRequest = async (carId) => {
+  //   try {
+  //     await axios.put(`http://localhost:4000/request/${carId}`);
      
-      const updatedResults = searchResults.map(car => {
-        if (car.car_id === carId) {
-          return { ...car, request: 'true' }; 
-        }
-        return car;
+  //     const updatedResults = searchResults.map(car => {
+  //       if (car.car_id === carId) {
+  //         return { ...car, request: 'true' }; 
+  //       }
+  //       return car;
+  //     });
+  //     setSearchResults(updatedResults);
+  //   } catch (error) {
+  //     console.error('Error updating request status:', error);
+  //   }
+  // };
+
+  const handleRequest = async (carId) => {
+    const userId = localStorage.getItem('user_id');
+    try {
+      await axios.post(`http://localhost:4000/updaterequest`, {
+        car_id: carId,
+        user_id: userId
       });
-      setSearchResults(updatedResults);
     } catch (error) {
-      console.error('Error updating request status:', error);
+      console.error('Error making request:', error);
     }
   };
+
 
   return (
     <div>
@@ -72,9 +88,17 @@ const Searchride = () => {
           <p className="card-text">From Destination: {car.from_destination}</p>
           <p className="card-text">To Destination: {car.to_destination}</p>
           <p className='card-text'>Mobile number:{car.number}</p>
-          {car.request === 'false' && (
-                  <button className="btn btn-primary" onClick={() => handleRequest(car.car_id)}>Request</button>
-                )}  
+          <p className='card-text'>Date:{car.date}</p>
+          <p className='card-text'>Time:{car.time}</p>
+
+          {/* {car.request === 'false' && ( */}
+                  <button
+                  className="btn btn-primary"
+                  onClick={() => handleRequest(car.car_id)}
+                >
+                  Request
+                </button>
+                {/* )}   */}
         </div>
       ))}
     </div>

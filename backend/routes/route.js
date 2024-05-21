@@ -14,7 +14,7 @@ const {fetchprofile,fetchprofilebyid} = require('../controllers/Login/fetchprofi
 const {updateProfile,updatedprofilestatus} = require('../controllers/Login/updateprofile');
 const deleteProfile = require('../controllers/Login/deleteprofile');
 const caradd = require('../controllers/Login/caradd');
-const { acceptRequest, rejectRequest } = require('../controllers/Login/requestar');
+const { acceptrequest, rejectrequest } = require('../controllers/Login/requestar');
 
 routers.post("/registercarpooler",registerCarPooler);
 routers.post("/login",login);
@@ -26,8 +26,8 @@ routers.get("/getprofile/:profile_id",fetchprofilebyid)
 routers.put("/updateprofile/:profile_id",updateProfile)
 routers.put("/updateprofilestatus/:profile_id",updatedprofilestatus)
 routers.delete("/deleteprofile/:profile_id",deleteProfile)
-routers.put("/acceptrequest/:carId",acceptRequest);
-routers.put("/rejectrequest/:carId",rejectRequest);
+routers.put("/acceptrequest",acceptrequest);
+routers.put("/rejectrequest",rejectrequest);
 
 
 //passenger
@@ -39,6 +39,6 @@ const fetchRequest = require('../controllers/Login/request');
 
 routers.post("/registerpassenger",registerPassenger);
 routers.post("/search",searchcar);
-routers.put("/request/:carId",updaterequest);   
+routers.post("/updaterequest",updaterequest);   
 routers.get("/fetchrequest",fetchRequest)
 module.exports = routers;

@@ -2,7 +2,7 @@ const { QueryTypes } = require('sequelize');
 const sequelize = require('../../database');
 
 const caradd = async (req, res) => {
-    const { user_id, car_name, chasis_number, seats_available, car_plate_number, from_destination, to_destination } = req.body;
+    const { user_id, car_name, chasis_number, seats_available, car_plate_number, from_destination, to_destination,date,time } = req.body;
     console.log('Received request body:', req.body);
 
     try {
@@ -34,8 +34,8 @@ const caradd = async (req, res) => {
         }
 
         const result = await sequelize.query(
-            'INSERT INTO car (user_id, car_name, chasis_number, seats_available, car_plate_number, from_destination, to_destination) VALUES (?, ?, ?, ?, ?, ?, ?)',
-            { replacements: [user_id, car_name, chasis_number, seats_available, car_plate_number, from_destination, to_destination], type: QueryTypes.INSERT }
+            'INSERT INTO car (user_id, car_name, chasis_number, seats_available, car_plate_number, from_destination, to_destination,date,time) VALUES (?, ?, ?, ?, ?, ?, ?,?,?)',
+            { replacements: [user_id, car_name, chasis_number, seats_available, car_plate_number, from_destination, to_destination,date,time], type: QueryTypes.INSERT }
         );
         console.log('Insert result:', result);
         res.status(200).json({ message: 'Car added successfully' });

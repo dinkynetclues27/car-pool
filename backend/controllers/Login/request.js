@@ -4,8 +4,8 @@ const sequelize = require('../../database');
 const fetchRequest = async (req, res) => {
     try {
         const requestedPerson = await sequelize.query(
-            'SELECT p.fname, p.number FROM car c INNER JOIN profile p ON c.user_id = p.user_id WHERE c.request = ?',
-            { replacements: ['true'], type: QueryTypes.SELECT }
+            'SELECT p.fname,p.number FROM request r inner join profile p on r.user_id = p.user_id inner join car c on r.car_id = c.car_id;',
+            {type: QueryTypes.SELECT }
         );
 
         res.status(200).json({ requestedPerson: requestedPerson[0] });
@@ -16,3 +16,5 @@ const fetchRequest = async (req, res) => {
 }
 
 module.exports = fetchRequest;
+
+
