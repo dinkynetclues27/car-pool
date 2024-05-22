@@ -26,8 +26,8 @@ routers.get("/getprofile/:profile_id",fetchprofilebyid)
 routers.put("/updateprofile/:profile_id",updateProfile)
 routers.put("/updateprofilestatus/:profile_id",updatedprofilestatus)
 routers.delete("/deleteprofile/:profile_id",deleteProfile)
-routers.put("/acceptrequest",acceptrequest);
-routers.put("/rejectrequest",rejectrequest);
+routers.put("/acceptrequest/:request_id",acceptrequest);
+routers.put("/rejectrequest/:request_id",rejectrequest);
 
 
 //passenger
@@ -40,5 +40,5 @@ const fetchRequest = require('../controllers/Login/request');
 routers.post("/registerpassenger",registerPassenger);
 routers.post("/search",searchcar);
 routers.post("/updaterequest",updaterequest);   
-routers.get("/fetchrequest",fetchRequest)
+routers.get("/fetchrequest/:user_id",fetchRequest)
 module.exports = routers;
