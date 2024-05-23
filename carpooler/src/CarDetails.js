@@ -12,7 +12,8 @@ const CarDetails = () => {
         seats_available: '',
         car_plate_number: '',
         date: '',
-        time:''
+        time:'',
+        price:''
     });
 
     const navigate = useNavigate();
@@ -125,6 +126,19 @@ const CarDetails = () => {
                   class="form-control"
                   name="to_destination"
                   value={formData.to_destination}
+                  onChange={handleChange}
+                />
+                {/* {error && error.includes('password') && <div className="text-danger">{error}</div>}  */}
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label">Fare:</label>
+              <div class="col-sm-10">
+                <input
+                  type="name"
+                  class="form-control"
+                  name="price"
+                  value={formData.price}
                   onChange={handleChange}
                 />
                 {/* {error && error.includes('password') && <div className="text-danger">{error}</div>}  */}

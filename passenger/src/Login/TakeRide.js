@@ -87,6 +87,7 @@ const Searchride = () => {
           <p className="card-text">Car Plate Number: {car.car_plate_number}</p>
           <p className="card-text">From Destination: {car.from_destination}</p>
           <p className="card-text">To Destination: {car.to_destination}</p>
+          <p className='card-text'>Fare: Rs.{car.price}</p>
           <p className='card-text'>Mobile number:{car.number}</p>
           <p className='card-text'>Date:{car.date}</p>
           <p className='card-text'>Time:{car.time}</p>
