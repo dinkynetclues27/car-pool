@@ -8,8 +8,8 @@ const fetchcar = async(req,res) => {
        
         const car = await sequelize.query(
           `
-          SELECT *
-          FROM car 
+          SELECT c.*,p.fname
+          FROM car c inner join profile p where c.user_id = p.user_id;
          
           `,
           {

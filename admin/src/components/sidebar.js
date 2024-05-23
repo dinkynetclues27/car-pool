@@ -28,7 +28,7 @@ const Sidebar = () => {
                 <a href="/fetchprofile" className="nav-link px-0"> <span className="d-none d-sm-inline text-white">Profile</span> </a>
               </li>
               <li className="w-100">
-                <a href="/" className="nav-link px-0 text-white"> <span className="d-none d-sm-inline text-white">Orders</span> </a>
+                <a href="/fetchcar" className="nav-link px-0 text-white"> <span className="d-none d-sm-inline text-white">Car</span> </a>
               </li>
               {/* <li>
                 <a href="#" className="nav-link px-0 text-white"> <span className="d-none d-sm-inline text-white">Item</span> 2 </a>

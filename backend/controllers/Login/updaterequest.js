@@ -24,8 +24,8 @@ const sequelize = require('../../database')
 const updaterequest = async(req,res) => {
     const{car_id,user_id} = req.body;
     try{
-      const result = await sequelize.query('INSERT INTO request (user_id, car_id) VALUES (?, ?)',
-      { replacements: [user_id, car_id], type: QueryTypes.INSERT });
+      const result = await sequelize.query('INSERT INTO request (user_id, car_id,request_status) VALUES (?, ?,?)',
+      { replacements: [user_id, car_id,'pending'], type: QueryTypes.INSERT });
       console.log(result);
       res.status(200).json({ message: 'Request added successfully' });
     }
@@ -34,4 +34,4 @@ const updaterequest = async(req,res) => {
       res.status(500).json({ error: 'Internal server error' });
     }
 }
-module.exports = updaterequest;
+module.exports = updaterequest;   

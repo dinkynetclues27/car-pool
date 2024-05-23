@@ -7,7 +7,7 @@ const fetchRequest = async (req, res) => {
         const requestedPerson = await sequelize.query(
             `SELECT p.fname, p.number,p.user_id,r.car_id,r.request_id FROM request r
              INNER JOIN profile p ON r.user_id = p.user_id
-             INNER JOIN car c ON r.car_id = c.car_id
+             INNER JOIN car c ON r.car_id = c.car_id        
              WHERE c.user_id = :userId;`,
             {
                 replacements: { userId },
@@ -15,7 +15,7 @@ const fetchRequest = async (req, res) => {
             }
         );
 
-        res.status(200).json({ requestedPerson: requestedPerson[0] });
+        res.status(200).json({ requestedPerson: requestedPerson});
     } catch (error) {
         console.error('Error fetching requested person:', error);
         res.status(500).json({ error: 'Internal server error' });

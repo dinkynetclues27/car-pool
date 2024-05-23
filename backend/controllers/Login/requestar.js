@@ -46,7 +46,7 @@ const acceptrequest = async (req, res) => {
             });
         res.status(200).json({ message: 'Request accepted successfully' });
     } catch (error) {
-        console.error('Error accepting request:', error);
+        console.error('Error accepting request:', error);   
         res.status(500).json({ error: 'Internal server error' });
     }
 }
@@ -61,7 +61,7 @@ const rejectrequest = async (req, res) => {
                 type: QueryTypes.UPDATE
             }
         );
-        res.status(200).send('Request rejected successfully');
+        res.status(200).send({message:'Request rejected successfully'});
     } catch (error) {
         console.error('Error rejecting request:', error);
         res.status(500).json({ error: 'Internal server error' });

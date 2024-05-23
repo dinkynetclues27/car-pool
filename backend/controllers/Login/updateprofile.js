@@ -49,7 +49,7 @@ const updateProfile = async (req, res) => {
     }
 };
 
-const updatedprofilestatus = async(req,res) => {
+const   updatedprofilestatus = async(req,res) => {
 
     const profile_id = req.params.profile_id;
 
