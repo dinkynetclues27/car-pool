@@ -9,6 +9,8 @@ import CarDetails from './CarDetails';
 import Navigate from './Navigation';
 import Footer from './Footer';
 import Request from './Login/Request';
+import FetchProfile from './FetchProfile';
+
 function App() {
   return (
    <div>
@@ -22,8 +24,9 @@ function App() {
       <Route path = '/personaldetails' element={<PersonalDetails/>}/>
       <Route path = '/cardetails' element={<CarDetails/>}/>
       <Route path = '/request' element={<Request/>}/>
+
+      <Route path='/fetchprofile' element={<FetchProfile/>}/>
       </Routes>
-    
       </BrowserRouter>
       <Footer/>
    </div>
