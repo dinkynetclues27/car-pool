@@ -22,4 +22,16 @@ const fetchRequest = async (req, res) => {
     }
 }
 
-module.exports = fetchRequest;
+
+const fetchallrequest = async(req,res)=>{
+    try{
+        const fetchallrequest = await sequelize.query(`Select * from request`,{type:QueryTypes.SELECT});
+        res.status(200).json({fetchallrequest:fetchallrequest})
+    }
+    catch(error)
+    {
+        console.error("error fetching request");
+        res.status(500).json({ error: 'Internal server error'});
+    }
+}
+module.exports = {fetchRequest,fetchallrequest};

@@ -19,22 +19,22 @@ const Request = () => {
     }, []);
     
     const handleAccept = async (requestId) => {
-        console.log(requestedPerson.user_id);
+        console.log(requestedPerson.userId);
         try {
             await axios.put(`http://localhost:4000/acceptrequest/${requestId}`);
             console.log('Request accepted successfully');
         } catch (error) {
-            console.error('Error accepting request:', error);
+           console.error("Error accepting request:",error)
         }
     };
 
     const handleReject = async (requestId) => {
-        console.log(requestedPerson);
+        console.log(requestedPerson.userId);
         try {
             await axios.put(`http://localhost:4000/rejectrequest/${requestId}`);
-            console.log('Request rejected successfully');
+            console.log("Request rejected successfully")
         } catch (error) {
-            console.error('Error rejecting request:', error);
+            console.error("Error rejecting request",error)
         }
     };
 
@@ -56,20 +56,16 @@ const Request = () => {
         {requestedPerson.length > 0 ? (
             <div className="card mb-3" style={{ maxWidth: '18rem' }} >
               {requestedPerson.map((request, index) => {
-                console.log(request)
+                // console.log(request)
                 return(
                     <div className="card-body" key={request.request_id}>
                     <p className="card-text"> Name: {request.fname}</p>
-                    <p className="card-text"> Mobile Number:{request.number}</p>
-                    <button onClick={()=>handleAccept(request.request_id)}>Accept</button>
+                    <p className="card-text"> Contact Number:{request.number}</p>
+                   <button onClick={()=>handleAccept(request.request_id)}>Accept</button>
                    <button onClick={()=>handleReject(request.request_id)}>Reject</button>
-      
                   </div>
                 )
               } 
-      
-              
-              
               )}
             </div>
           ) : null}
@@ -78,6 +74,3 @@ const Request = () => {
 };
 
 export default Request;
-
-
-

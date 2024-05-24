@@ -6,6 +6,7 @@ import Login from './components/login'
 import Dashboard from './components/dashboard';
 import ProfileFetch from './components/profile';
 import Fetchcar from './components/fetchcar';
+import Carrequest from './components/Carrequest';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
             <Route path="/" element={<Dashboard/>} />
             <Route path="/fetchprofile" element={<ProfileFetch/>} />
             <Route path="/fetchcar" element={<Fetchcar/>}/>
+            <Route path="/carrequest" element={<Carrequest/>}/>
           </Routes>
 
         </div>
