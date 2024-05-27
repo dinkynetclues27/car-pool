@@ -11,9 +11,9 @@ const Request = () => {
                 const response = await axios.get(`http://localhost:4000/fetchrequest/${userId}`);
                 setRequestedPerson(response.data.requestedPerson);
             } catch (error) {
-                console.error('Error fetching requested person:', error);
+                console.error("Error Fetching Request:",error);
             }
-        };``
+        };
     
         fetchRequest();
     }, []);
