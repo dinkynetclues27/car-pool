@@ -13,7 +13,7 @@ const Request = () => {
             } catch (error) {
                 console.error('Error fetching requested person:', error);
             }
-        };
+        };``
     
         fetchRequest();
     }, []);
