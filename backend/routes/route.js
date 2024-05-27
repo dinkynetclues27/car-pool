@@ -41,7 +41,7 @@ routers.put("/rejectrequest/:request_id",rejectrequest);
 const {registerPassenger} = require('../controllers/Login/register');
 const searchcar = require('../controllers/Login/searchcar');
 const updaterequest = require('../controllers/Login/updaterequest');
-const fetchRequest = require('../controllers/Login/request');
+const {fetchRequest,fetchallrequest} = require('../controllers/Login/request');
 
 
 
@@ -49,4 +49,5 @@ routers.post("/registerpassenger",registerPassenger);
 routers.post("/search",searchcar);
 routers.post("/updaterequest",updaterequest);   
 routers.get("/fetchrequest/:user_id",fetchRequest)
+routers.get("/fetchallrequest",fetchallrequest)
 module.exports = routers;   

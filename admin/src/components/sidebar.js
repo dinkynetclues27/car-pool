@@ -30,6 +30,9 @@ const Sidebar = () => {
               <li className="w-100">
                 <a href="/fetchcar" className="nav-link px-0 text-white"> <span className="d-none d-sm-inline text-white">Car</span> </a>
               </li>
+              <li className="w-100">
+                <a href="/carrequest" className="nav-link px-0 text-white"> <span className="d-none d-sm-inline text-white">Request</span> </a>
+              </li>
               {/* <li>
                 <a href="#" className="nav-link px-0 text-white"> <span className="d-none d-sm-inline text-white">Item</span> 2 </a>
               </li> */}
