@@ -74,3 +74,80 @@ const Request = () => {
 };
 
 export default Request;
+
+
+// import React, { useState, useEffect } from 'react';
+// import axios from 'axios';
+
+// const Request = () => {
+//     const [requestedPerson, setRequestedPerson] = useState([]);
+
+//     useEffect(() => {
+//         const fetchRequest = async () => {
+//             const userId = localStorage.getItem('user_id');
+//             try {
+//                 const response = await axios.get(`http://localhost:4000/fetchrequest/${userId}`);
+//                 setRequestedPerson(response.data.requestedPerson);
+//             } catch (error) {
+//                 console.error("Error Fetching Request:", error);
+//             }
+//         };
+
+//         fetchRequest();
+//     }, []);
+
+//     const handleAccept = async (requestId) => {
+//         try {
+//             await axios.put(`http://localhost:4000/acceptrequest/${requestId}`);
+//             setRequestedPerson(prevState => prevState.map(person => {
+//                 if (person.request_id === requestId) {
+//                     return { ...person, request_accept: 'approved' };
+//                 }
+//                 return person;
+//             }));
+//         } catch (error) {
+//             console.error("Error accepting request:", error);
+//         }
+//     };
+
+//     const handleReject = async (requestId) => {
+//         try {
+//             await axios.put(`http://localhost:4000/rejectrequest/${requestId}`);
+//             setRequestedPerson(prevState => prevState.map(person => {
+//                 if (person.request_id === requestId) {
+//                     return { ...person, request_accept: 'rejected' };
+//                 }
+//                 return person;
+//             }));
+//         } catch (error) {
+//             console.error("Error rejecting request", error);
+//         }
+//     };
+
+//     return (
+//         <>
+//             {requestedPerson.length > 0 ? (
+//                 <div className="card mb-3" style={{ maxWidth: '18rem' }}>
+//                     {requestedPerson.map((request, index) => (
+//                         <div className="card-body" key={request.request_id}>
+//                             <p className="card-text">Name: {request.fname}</p>
+//                             <p className="card-text">Contact Number: {request.number}</p>
+//                             {request.request_accept === 'approved' ? (
+//                                 <p>Request Accepted</p>
+//                             ) : request.request_accept === 'rejected' ? (
+//                                 <p>Request Rejected</p>
+//                             ) : (
+//                                 <>
+//                                     <button onClick={() => handleAccept(request.request_id)}>Accept</button>
+//                                     <button onClick={() => handleReject(request.request_id)}>Reject</button>
+//                                 </>
+//                             )}
+//                         </div>
+//                     ))}
+//                 </div>
+//             ) : null}
+//         </>
+//     );
+// };
+
+// export default Request;

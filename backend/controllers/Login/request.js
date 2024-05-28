@@ -34,4 +34,19 @@ const fetchallrequest = async(req,res)=>{
         res.status(500).json({ error: 'Internal server error'});
     }
 }
-module.exports = {fetchRequest,fetchallrequest};
+
+const getrequest = async(req,res) =>{
+    const userId = req.body.user_id;
+    try{
+        const requestedcars = await sequelize.query(`SELECT car_id, request_accept FROM request WHERE user_id = ?`,{replacements: [userId],type:QueryTypes.SELECT})
+        res.json(requestedcars);
+        console.log(requestedcars)
+    }
+    catch(error){
+        console.error('Error fetching requested cars:', error);
+    res.status(500).json({ error: 'Internal server error' });
+    }
+}
+
+
+module.exports = {fetchRequest,fetchallrequest,getrequest};

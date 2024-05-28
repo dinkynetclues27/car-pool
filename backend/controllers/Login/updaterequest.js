@@ -24,7 +24,7 @@ const sequelize = require('../../database')
 const updaterequest = async(req,res) => {
     const{car_id,user_id} = req.body;
     try{
-      const result = await sequelize.query('INSERT INTO request (user_id, car_id,request_status) VALUES (?, ?,?)',
+      const result = await sequelize.query('INSERT INTO request (user_id, car_id,request_accept) VALUES (?, ?,?)',
       { replacements: [user_id, car_id,'pending'], type: QueryTypes.INSERT });
       console.log(result);
       res.status(200).json({ message: 'Request added successfully' });
